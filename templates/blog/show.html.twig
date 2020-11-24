@@ -3,15 +3,11 @@
 {% block body %}
 
     <article>
-        <h2>Titre de l'article</h2>
-        <div class="metadata">Ecrit le 12/03/2020 à 8h00 dans la catégorie Politique</div>
+        <h2>{{ article.title }}</h2>
+        <div class="metadata">Ecrit le {{ article.createdAt | date('d/m/y') }} à {{ article.createdAt | date('H:i') }} dans la catégorie Politique</div>
         <div class="content">
-            <img src="http://placehold.it/350x150" alt="">
-                <p>Amet quis amet anim ea. Reprehenderit ea adipisicing sunt aliqua reprehenderit magna deserunt excepteur nisi do sint officia. Ad est occaecat occaecat est esse culpa laboris cillum pariatur duis. Qui reprehenderit anim voluptate id officia adipisicing laborum Lorem excepteur id quis fugiat incididunt duis.<p>
-                <p>loOfficia tempor in qui labore veniam dolore reprehenderit ex voluptate magna et tempor. Nisi minim sit sunt incididunt commodo occaecat aliquip sunt ad. Aute sit dolor do culpa incididunt excepteur velit. Dolore culpa aliquip esse amet nulla incididunt ea fugiat reprehenderit nulla dolor ea exercitation velit.rem<p>
-            <hr>
-            <p>Nostrud nisi officia cupidatat tempor nisi est ex ipsum. Sit magna est eiusmod aliqua aute mollit excepteur ad eu laborum ad consectetur enim. Lorem officia dolore Lorem aute qui est elit deserunt non minim non minim pariatur. Irure ad deserunt qui excepteur culpa minim.Quis elit irure ea minim proident consectetur in ut ipsum cillum occaecat duis et. Magna cupidatat minim aliquip sunt Lorem. Aute ad duis nulla non. Quis dolor duis occaecat id aliquip et.</p>
-            <p>Magna ea officia sunt esse laboris eu amet exercitation. Sit cillum laborum esse consequat ad. Dolor quis adipisicing reprehenderit tempor.Incididunt mollit consectetur dolore amet eiusmod proident mollit sint. Sunt deserunt voluptate et ut. Reprehenderit enim enim sit velit est aliqua dolore. Nisi laborum laborum ullamco amet.</p>
+            <img src="{{ article.image }}" alt="">
+            {{ article.content | raw }}
         </div>
     </article>
 

@@ -5,37 +5,17 @@
 {% block body %}
 
 <section class="articles">
-
-    <article>
-        <h2>Titre de l'article</h2>
-        <div class="metadata">Ecrit le 12/03/2020 à 8h00 dans la catégorie Politique</div>
-        <div class="content">
-            <img src="http://placehold.it/350x150" alt="">
-                <p>Amet quis amet anim ea. Reprehenderit ea adipisicing sunt aliqua reprehenderit magna deserunt excepteur nisi do sint officia. Ad est occaecat occaecat est esse culpa laboris cillum pariatur duis. Qui reprehenderit anim voluptate id officia adipisicing laborum Lorem excepteur id quis fugiat incididunt duis.<p>
-                <p>loOfficia tempor in qui labore veniam dolore reprehenderit ex voluptate magna et tempor. Nisi minim sit sunt incididunt commodo occaecat aliquip sunt ad. Aute sit dolor do culpa incididunt excepteur velit. Dolore culpa aliquip esse amet nulla incididunt ea fugiat reprehenderit nulla dolor ea exercitation velit.rem<p>
-            <a href="{{ path('blog_show') }}" class="btn btn-primary">Lire la suite</a>
-        </div>
-    </article>
-    <article>
-        <h2>Titre de l'article</h2>
-        <div class="metadata">Ecrit le 12/03/2020 à 8h00 dans la catégorie Politique</div>
-        <div class="content">
-            <img src="http://placehold.it/350x150" alt="">
-                <p>Amet quis amet anim ea. Reprehenderit ea adipisicing sunt aliqua reprehenderit magna deserunt excepteur nisi do sint officia. Ad est occaecat occaecat est esse culpa laboris cillum pariatur duis. Qui reprehenderit anim voluptate id officia adipisicing laborum Lorem excepteur id quis fugiat incididunt duis.<p>
-                <p>loOfficia tempor in qui labore veniam dolore reprehenderit ex voluptate magna et tempor. Nisi minim sit sunt incididunt commodo occaecat aliquip sunt ad. Aute sit dolor do culpa incididunt excepteur velit. Dolore culpa aliquip esse amet nulla incididunt ea fugiat reprehenderit nulla dolor ea exercitation velit.rem<p>
-            <a href="{{ path('blog_show') }}" class="btn btn-primary">Lire la suite</a>
-        </div>
-    </article>
-    <article>
-        <h2>Titre de l'article</h2>
-        <div class="metadata">Ecrit le 12/03/2020 à 8h00 dans la catégorie Politique</div>
-        <div class="content">
-            <img src="http://placehold.it/350x150" alt="">
-                <p>Amet quis amet anim ea. Reprehenderit ea adipisicing sunt aliqua reprehenderit magna deserunt excepteur nisi do sint officia. Ad est occaecat occaecat est esse culpa laboris cillum pariatur duis. Qui reprehenderit anim voluptate id officia adipisicing laborum Lorem excepteur id quis fugiat incididunt duis.<p>
-                <p>loOfficia tempor in qui labore veniam dolore reprehenderit ex voluptate magna et tempor. Nisi minim sit sunt incididunt commodo occaecat aliquip sunt ad. Aute sit dolor do culpa incididunt excepteur velit. Dolore culpa aliquip esse amet nulla incididunt ea fugiat reprehenderit nulla dolor ea exercitation velit.rem<p>
-            <a href="{{ path('blog_show') }}" class="btn btn-primary">Lire la suite</a>
-        </div>
-    </article>
+    {% for article in articles %}
+        <article>
+            <h2>{{ article.title }}</h2>
+            <div class="metadata">Ecrit le {{ article.createdAt | date('d/m/y') }} à {{ article.createdAt | date('H:i') }} dans la catégorie Politique</div>
+            <div class="content">
+                <img src="{{ article.image }}" alt="">
+                {{ article.content | raw }}
+                <a href="{{ path('blog_show', {'id': article.id }) }}" class="btn btn-primary">Lire la suite</a>
+            </div>
+        </article>
+    {% endfor %}
 </section>
 
 {% endblock %}
